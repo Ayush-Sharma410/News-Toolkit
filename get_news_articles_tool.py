@@ -19,13 +19,20 @@ class GetNewsArticlesTool(BaseTool):
     args_schema: Type[BaseModel] = GetNewsArticlesInput
     description: str = "Retrieves news articles from NewsAPI."
 
-    def _execute(self, keywords: str, sources: str = "", language: str = "en", max_results: int = 5) -> dict:
+    def _execute(self, keywords, max_results=5, sources="", language="en") -> dict:
+        if not isinstance(keywords, str) or not isinstance(sources, str) or not isinstance(language, str) or not isinstance(max_results, int) or max_results < 1:
+            raise ValueError("Invalid input values. Please provide valid input parameters.")
+        
         url = f"https://newsapi.org/v2/everything?q={keywords}&sources={sources}&language={language}&apiKey={NEWSAPI_API_KEY}"
         
         response = requests.get(url)
+        print("API URL:", url)
+        print("API Response:", response.json())
+
         
         if response.status_code == 200:
             articles = response.json().get("articles")
             return {"articles": articles[:max_results]}
         else:
             return {"error": "Unable to retrieve news articles."}
+

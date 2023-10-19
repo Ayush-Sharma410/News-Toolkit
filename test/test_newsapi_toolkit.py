@@ -1,6 +1,6 @@
 import unittest
 from newsapi_toolkit import NewsAPIToolkit
-from newsapi_articles_tool import GetNewsArticlesTool, GetNewsArticlesInput
+from get_news_articles_tool import GetNewsArticlesTool, GetNewsArticlesInput
 
 class NewsAPIToolkitTests(unittest.TestCase):
 
@@ -19,7 +19,7 @@ class NewsAPIToolkitTests(unittest.TestCase):
 
     def test_toolkit_has_name_and_description(self):
         self.assertEqual(self.toolkit.name, "NewsAPI Toolkit")
-        self.assertEqual(self.toolkit.description, "NewsAPI Toolkit contains tools for accessing news articles.")
+        self.assertEqual(self.toolkit.description, "NewsAPI Toolkit contains tools for accessing news articles")
 
 if __name__ == '__main__':
     unittest.main()
