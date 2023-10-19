@@ -1,4 +1,11 @@
 import unittest
+import sys
+from os import getcwd
+
+module_path = getcwd().replace("tests","")
+sys.path.append(module_path)
+print(module_path)
+
 from newsapi_toolkit import NewsAPIToolkit
 from get_news_articles_tool import GetNewsArticlesTool, GetNewsArticlesInput
 

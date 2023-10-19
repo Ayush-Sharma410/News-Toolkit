@@ -1,5 +1,9 @@
 import unittest
 import json
+from os import getcwd
+import sys
+module_path = getcwd().replace("tests","")
+sys.path.append(module_path)
 from get_news_articles_tool import GetNewsArticlesTool, GetNewsArticlesInput
 
 
